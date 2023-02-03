@@ -8,5 +8,5 @@
 - Not to follow the Amazon SES STMP code provided from the link
 
 <h2>Changes to make to AmazonSESSample class from the above AWS documentation</h2>
-- Download the AmazonSESSample.java file provided
+- Download the AmazonSESSample.java file provided</br>
 - Import as new Java class to desired Android Studio project
