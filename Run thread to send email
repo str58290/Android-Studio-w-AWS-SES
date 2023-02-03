@@ -1,0 +1,5 @@
+try {
+  new Thread(amazonSES).start();
+} catch (Exception e) {
+  e.printStackTrace();
+}
