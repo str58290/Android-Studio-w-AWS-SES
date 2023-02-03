@@ -1,0 +1,5 @@
+dependencies{
+  implementation files('libs\\javax.mail.jar')
+  implementation files('libs\\javax.activation.jar')
+  implementation files('libs\\javax.additionnal.jar')
+ }
