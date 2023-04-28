@@ -13,3 +13,18 @@
 <h2>In place of AWS' documented SES STMP code</h2>
 - Download the AmazonSESSample.java file provided</br>
 - Import as new Java class to desired Android Studio project
+
+<h2>To use the class to send emails using AWS SES</h2>
+Insert the following code to where you would like to send your email:
+
+```java
+//Emailing of OTP to user goes here.
+AmazonSESSample amazonSES = new AmazonSESSample();
+try {
+    amazonSES.setTO(userEmail_prev_activity);
+    amazonSES.setBODY(otp_generated);
+    new Thread(amazonSES).start();
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
