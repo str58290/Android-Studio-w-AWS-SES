@@ -1,6 +1,0 @@
-//Add the following code to where you would like to activate sending of email.
-try {
-  new Thread(amazonSES).start();
-} catch (Exception e) {
-  e.printStackTrace();
-}
