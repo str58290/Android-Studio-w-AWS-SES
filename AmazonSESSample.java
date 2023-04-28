@@ -57,4 +57,72 @@ public class AmazonSESSample extends Thread{
     public void run() {
 
         // Create a Properties object to contain connection configuration information.
-        Propertie
+        Properties props = System.getProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.port", PORT);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+
+        // Create a Session object to represent a mail session with the specified properties.
+        Session session = Session.getDefaultInstance(props);
+
+        // Create a message with the specified information.
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(FROM,FROMNAME));
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        try {
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        try {
+            msg.setSubject(SUBJECT);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        try {
+            msg.setContent("<h2>"+BODY+"</h2>","text/html");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        // Create a transport.
+        Transport transport = null;
+        try {
+            transport = session.getTransport();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+
+        // Send the message.
+        try
+        {
+            System.out.println("Sending...");
+
+            // Connect to Amazon SES using the SMTP username and password you specified above.
+            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+
+            // Send the email.
+            transport.sendMessage(msg, msg.getAllRecipients());
+            System.out.println("Email sent!");
+        }
+        catch (Exception ex) {
+            System.out.println("The email was not sent.");
+            System.out.println("Error message: " + ex.getMessage());
+        }
+        finally
+        {
+            // Close and terminate the connection.
+            try {
+                transport.close();
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
