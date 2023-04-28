@@ -8,6 +8,7 @@
 <h2>Important pre-requisites</h2>
 <p>1. To have followed the steps AWS provided (to 1-Set up Amazon Simple Email Service and 2-Obtain Amazon SES SMTP credentials): <a href="https://docs.aws.amazon.com/ses/latest/dg/send-using-smtp-programmatically.html">Click here</br></a></p>
 <p>2. To have imported the following 3 JAR libraries into your Android Studio project (Directory to go to: Project>app>libs): <a href="https://drive.google.com/drive/folders/1q5n2ROQvlmvkW7DAWyhGxzceRustouhK">Click here.</br></a></p>
+<p>3. To have added important dependencies listed in the file provided.</p>
 
 <h2>In place of AWS' documented SES STMP code</h2>
 - Download the AmazonSESSample.java file provided</br>
